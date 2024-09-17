@@ -25,9 +25,11 @@ namespace thuc_hanh_ctdl
             DisplayNums(nums);
             timer.Stop();
 
-            Console.WriteLine("Ket thuc thoi gian chay....");
+            Console.WriteLine("\nKet thuc thoi gian chay....");
             long ms = timer.ElapsedMilliseconds;
-            Console.WriteLine("Ket qua do: T = {0} mili giay", ms.ToString());
+            double sc = timer.Elapsed.TotalSeconds; // phải là double
+            Console.WriteLine("Ket qua do: T = {0} mili giay = {1} giay", ms.ToString(), sc.ToString());
+
 
 
             Console.ReadKey();
