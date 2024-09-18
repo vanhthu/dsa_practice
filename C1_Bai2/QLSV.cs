@@ -21,7 +21,7 @@ namespace C1_Bai2
             {
                 if(sv == null)
                 {
-                    Console.WriteLine("Sinh vien null");
+                    Console.WriteLine("Danh sach sinh vien rong!");
                     continue;
                 }
                 totalMon1 += sv.mon1;

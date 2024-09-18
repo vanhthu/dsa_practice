@@ -30,15 +30,15 @@ namespace C1_Bai2
                 dssv[i] = new SinhVien(maSV, mon1, mon2, mon3);
             }
 
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
             double dtbCach1 = QLSV.DiemTrungBinhMon(dssv);
-            stopwatch.Stop();
+            timer.Stop();
 
             Console.WriteLine($"Diem trung binh theo cach 1: {dtbCach1}");
-            Console.WriteLine($"Thoi gian tinh diem trung binh theo cach 1: {stopwatch.ElapsedMilliseconds} ms");
+            Console.WriteLine($"Thoi gian tinh diem trung binh theo cach 1: {timer.ElapsedMilliseconds} ms");
 
-
+            
         }
         static void Main(string[] args)
         {
