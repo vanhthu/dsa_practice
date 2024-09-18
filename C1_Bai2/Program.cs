@@ -44,24 +44,71 @@ namespace C1_Bai2
             timer.Stop();
 
             Console.WriteLine($"Diem trung binh theo cach 1: {dtbCach2}");
-            Console.WriteLine($"Thoi gian tinh diem trung binh theo cach 1: {timer.ElapsedMilliseconds} ms");
+            Console.WriteLine($"Thoi gian tinh diem trung binh theo cach 2: {timer.ElapsedMilliseconds} ms");
 
 
         }
+
+        static SinhVien[] NhapDuLieuNgauNhien()
+        {            
+            Random random = new Random();
+            Console.Write("\n\nNhap vao so luong sinh vien: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            SinhVien[] dssv = new SinhVien[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                string maSV = $"Ma sinh vien: {i + 1}";
+                Console.WriteLine(maSV);
+
+                int mon1 = random.Next(0, 101); // random từ 0-100
+                Console.WriteLine($"Diem mon 1: {mon1}");
+
+                int mon2 = random.Next(0, 101);
+                Console.WriteLine($"Diem mon 2: {mon2}");
+
+
+                int mon3 = random.Next(0, 101);
+                Console.WriteLine($"Diem mon 3: {mon3}");
+
+
+                dssv[i] = new SinhVien(maSV, mon1, mon2, mon3);
+            }
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            double dtbCach1 = QLSV.DiemTrungBinhMon(dssv);
+            timer.Stop();
+
+
+            Console.WriteLine($"Diem trung binh theo cach 1: {dtbCach1}");
+            Console.WriteLine($"Thoi gian tinh diem trung binh theo cach 1: {timer.ElapsedMilliseconds} ms");
+
+            timer.Start();
+            double dtbCach2 = QLSV.DiemTrungBinhMonSV(dssv);
+            timer.Stop();
+
+            Console.WriteLine($"Diem trung binh theo cach 1: {dtbCach2}");
+            Console.WriteLine($"Thoi gian tinh diem trung binh theo cach 2: {timer.ElapsedMilliseconds} ms");
+            return dssv;
+        }
+
+
         static void Main(string[] args)
         {
             int choice;
             do
             {
-                Console.WriteLine("************** MENU **************");
-                Console.WriteLine("*    1. Nhap tu ban phim         *");
-                Console.WriteLine("**********************************");
+                Console.WriteLine("************** MENU ********************");
+                Console.WriteLine("*    1. Nhap tu ban phim                *");
+                Console.WriteLine("*    2. Nhap so luong ngau nhien        *");
+                Console.WriteLine("*****************************************");
 
                 Console.Write("Lua chon cua ban la: ");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice) {
                     case 1: NhapTuBanPhim(); break;
+                    case 2: NhapDuLieuNgauNhien(); break;
                     case 0:
                         Console.WriteLine("Ban muon thoat khoi chuong trinh?");                        
                         break;
