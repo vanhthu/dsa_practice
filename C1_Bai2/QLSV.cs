@@ -35,5 +35,22 @@ namespace C1_Bai2
 
             return (tbMon1 + tbMon2 + tbMon3) / 3;
         }
+
+        public static double DiemTrungBinhMonSV(SinhVien[] dssv)
+        {
+            double total= 0;
+
+            foreach (var sv in dssv)
+            {
+                if (sv == null)
+                {
+                    Console.WriteLine("Danh sach sinh vien rong!");
+                    continue;
+                }
+                total += sv.DiemTrungBinh();
+            }          
+
+            return total/dssv.Length;
+        }
     }
 }

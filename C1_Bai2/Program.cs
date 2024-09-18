@@ -35,10 +35,18 @@ namespace C1_Bai2
             double dtbCach1 = QLSV.DiemTrungBinhMon(dssv);
             timer.Stop();
 
+            
             Console.WriteLine($"Diem trung binh theo cach 1: {dtbCach1}");
             Console.WriteLine($"Thoi gian tinh diem trung binh theo cach 1: {timer.ElapsedMilliseconds} ms");
 
-            
+            timer.Start();
+            double dtbCach2 = QLSV.DiemTrungBinhMonSV(dssv);
+            timer.Stop();
+
+            Console.WriteLine($"Diem trung binh theo cach 1: {dtbCach2}");
+            Console.WriteLine($"Thoi gian tinh diem trung binh theo cach 1: {timer.ElapsedMilliseconds} ms");
+
+
         }
         static void Main(string[] args)
         {
