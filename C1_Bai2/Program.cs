@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-
+using System.Timers;
 namespace C1_Bai2
 {
     internal class Program
     {
         static void NhapTuBanPhim()
         {            
-            Console.Write("Nhap vao so luong sinh vien: ");
+            Console.Write("\n\nNhap vao so luong sinh vien: ");
             int n = Convert.ToInt32(Console.ReadLine());
             SinhVien[] dssv = new SinhVien[n];
 
@@ -27,14 +29,25 @@ namespace C1_Bai2
 
                 dssv[i] = new SinhVien(maSV, mon1, mon2, mon3);
             }
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            double dtbCach1 = QLSV.DiemTrungBinhMon(dssv);
+            stopwatch.Stop();
+
+            Console.WriteLine($"Diem trung binh theo cach 1: {dtbCach1}");
+            Console.WriteLine($"Thoi gian tinh diem trung binh theo cach 1: {stopwatch.ElapsedMilliseconds} ms");
+
+
         }
         static void Main(string[] args)
         {
             int choice;
             do
             {
-                Console.WriteLine("***** MENU *****");
-                Console.WriteLine("1. Nhap tu ban phim");
+                Console.WriteLine("************** MENU **************");
+                Console.WriteLine("*    1. Nhap tu ban phim         *");
+                Console.WriteLine("**********************************");
 
                 Console.Write("Lua chon cua ban la: ");
                 choice = Convert.ToInt32(Console.ReadLine());
