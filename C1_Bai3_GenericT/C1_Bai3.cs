@@ -63,7 +63,7 @@ namespace C1_Bai3_GenericT
             NhanVien nv2 = new NhanVien { HoTen = "Nguyen Van B", MaNhanVien = "NV002", HeSoLuong = 3.5 };
             Console.WriteLine($" - Before swap: {nv1}  - {nv2}");
             Swap(ref nv1, ref nv2);
-            Console.WriteLine($" -After swap  : {nv1}  - {nv2}");
+            Console.WriteLine($" - After swap  : {nv1}  - {nv2}");
             Console.WriteLine();
 
             Console.WriteLine("\n\n");
