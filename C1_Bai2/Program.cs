@@ -167,15 +167,26 @@ namespace C1_Bai2
                 i++;
             }
             streamReader.Close();
-            double tongDiemTrungBinh = 0;
+            double diemTrungBinh = 0;
             
-            foreach (SinhVien sv in dssv)
-            {
-                tongDiemTrungBinh += sv.DiemTrungBinh();
-            }
-            tongDiemTrungBinh /= numOfStudents;
+            //foreach (SinhVien sv in dssv)
+            //{
+            //    diemTrungBinh += sv.DiemTrungBinh();
+            //}
+            //diemTrungBinh /= numOfStudents;
 
-            Console.WriteLine($"Tong diem trung binh: {tongDiemTrungBinh}");
+            //Console.WriteLine($"Tong diem trung binh: {diemTrungBinh}");
+
+
+
+            // cach 2
+            foreach(SinhVien sv in dssv)
+            {
+                double tongDiemTrungBinh1 = sv.DiemTrungBinh();
+                Console.WriteLine($"MSSV: {sv.masv} - M1: {sv.mon1} - M2: {sv.mon2} - M3: {sv.mon3} - Diem TB: {tongDiemTrungBinh1}");
+                diemTrungBinh += tongDiemTrungBinh1;
+            }
+
             return dssv;
         }
 
