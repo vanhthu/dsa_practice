@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "thuc_hanh_ctdl", "thuc_hanh_ctdl\thuc_hanh_ctdl.csproj", "{50D42E01-2178-4708-8C60-EFC5316666CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C1_DisplayNums_Reference", "thuc_hanh_ctdl\C1_DisplayNums_Reference.csproj", "{50D42E01-2178-4708-8C60-EFC5316666CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C1_Bai3_GenericT", "C1_Bai3_GenericT\C1_Bai3_GenericT.csproj", "{6A36DEC1-A538-4450-949A-A27324164708}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{50D42E01-2178-4708-8C60-EFC5316666CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50D42E01-2178-4708-8C60-EFC5316666CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50D42E01-2178-4708-8C60-EFC5316666CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A36DEC1-A538-4450-949A-A27324164708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A36DEC1-A538-4450-949A-A27324164708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A36DEC1-A538-4450-949A-A27324164708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A36DEC1-A538-4450-949A-A27324164708}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

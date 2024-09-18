@@ -14,7 +14,7 @@ namespace thuc_hanh_ctdl
             Console.Write("Nhap vao n = ");
 
             long n = Convert.ToInt64(Console.ReadLine());
-            long[] nums = new long[n];
+            long[] nums = new long[n]; 
             BuildArray(nums);
             
             Stopwatch timer = new Stopwatch();            
