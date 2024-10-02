@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace C2_Bai1_Search
         }
         public static void XuatMang()
         {
-            Console.Write("Mang vua nhap la: ");
+            Console.Write("\nMang vua nhap la: ");
             for (int i = 0; i < arr.Length; i++)
             {
                 Console.Write(arr[i] + " ");
@@ -32,24 +33,24 @@ namespace C2_Bai1_Search
 
         public static void InKetQua()
         {
-            XuatMang();
-            Console.Write("Nhap phan tu X: ");
-            int X = Convert.ToInt32(Console.ReadLine());
+            //XuatMang();
+            //Console.Write("Nhap vao gia tri X: ");
+            //int X = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("\n\t KET QUA");
+            //Console.WriteLine("1.1. Phan tu X = {0} co gia tri dau tien: arr[{1}]", X, Search.TimPhanTuDauTien(arr, X));
 
-            Console.WriteLine("1.1. Phan tu X = {0} co gia tri dau tien: arr[{1}]", X, Search.TimPhanTuDauTien(arr, X));
+            //Console.WriteLine("1.2. Phan tu X = {0} co gia tri sau cung: arr[{1}]", X, Search.TimPhanTuSauCung(arr, X));
 
-            Console.WriteLine("1.2. Phan tu X = {0} co gia tri sau cung: arr[{1}]", X, Search.TimPhanTuSauCung(arr, X));
+            //Console.Write("1.3. Phan tu co gia tri X = {0}         : ", X);
+            //int[] arr1 = Search.TimTatCaPhanTu(arr, X);
+            //for (int i = 0; i < arr1.Length; i++)
+            //    Console.Write("arr[{0}]\t", arr1[i]);
+            //Console.WriteLine();
 
-            Console.Write("1.3. Phan tu co gia tri X = {0}         : ", X);
-            int[] arr1 = Search.TimTatCaPhanTu(arr, X);
-            for (int i = 0; i < arr1.Length; i++)
-                Console.Write("arr[{0}]\t", arr1[i]);
-            Console.WriteLine();
+            //Console.WriteLine("1.4. Phan tu nho nhat dau tien          : arr[{0}]", Search.TimPhanTuNhoNhatDauTien(arr));
 
-            Console.WriteLine("1.4. Phan tu nho nhat dau tien          : arr[{0}]", Search.TimPhanTuNhoNhatDauTien(arr));
 
-        }
+           
+        }       
     }
 }

@@ -10,8 +10,8 @@ namespace C2_Bai1_Search
     {
         static void Main(string[] args)
         {
-            InOut.NhapMang();
-            InOut.InKetQua();
+            Search.NhapMang();
+            Search.InKetQua();
 
             Console.ReadKey();
         }

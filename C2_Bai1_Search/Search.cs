@@ -8,8 +8,38 @@ namespace C2_Bai1_Search
 {
     internal class Search
     {
+        static int[] arr;
+        public static void NhapMang()
+        {
+            Console.Write("Nhap so phan tu: ");
+            int N = Convert.ToInt32(Console.ReadLine());
+            arr = new int[N];
+            for (int i = 0; i < N; i++)
+            {
+                Console.Write(" - Nhap phan tu arr[{0}]: ", i);
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+        }
+        public static void XuatMang()
+        {
+            Console.Write("Mang vua nhap la: ");
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
+            Console.WriteLine();
+        }
+        public static void InKetQua()
+        {
+            XuatMang();
+            Console.Write("Nhap phan tu X: ");
+            int X = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("1.4. Phan tu nho nhat dau tien          : arr[{0}]", TimPhanTuNhoNhatDauTien());
+
+        }
         // 1.1
-        public static int TimPhanTuDauTien(int[] arr, int X)
+        public static int TimPhanTuDauTien(int X)
         {
             for (int i = 0; i < arr.Length; i++)
                 if (arr[i] == X)
@@ -18,7 +48,7 @@ namespace C2_Bai1_Search
         }
 
         // 1.2
-        public static int TimPhanTuSauCung(int[] arr, int X)
+        public static int TimPhanTuSauCung(int X)
         {
             for (int i = arr.Length - 1; i >= 0; i--)
                 if (arr[i] == X)
@@ -27,7 +57,7 @@ namespace C2_Bai1_Search
         }
 
         // 1.3
-        public static int[] TimTatCaPhanTu(int[] arr, int X)
+        public static int[] TimTatCaPhanTu(int X)
         {
             List<int> list = new List<int>();
             for (int i = 0; i < arr.Length; i++)
@@ -37,7 +67,7 @@ namespace C2_Bai1_Search
         }
 
         // 1.4
-        public static int TimPhanTuNhoNhatDauTien(int[] arr)
+        public static int TimPhanTuNhoNhatDauTien()
         {
             int index = 0;
             for (int i = 0; i < arr.Length - 1; i++)
@@ -48,7 +78,7 @@ namespace C2_Bai1_Search
         }
 
         // 1.5
-        public static int TimPhanTuLonNhatSauCung(int[] arr)
+        public static int TimPhanTuLonNhatSauCung()
         {
             int index = arr.Length - 1;
             for (int i = arr.Length - 1; i > 0; i--)
@@ -59,10 +89,10 @@ namespace C2_Bai1_Search
         }
 
         // 1.6
-        public static int[] TimTatCaCacSoNhoNhat(int[] arr)
+        public static int[] TimTatCaCacSoNhoNhat()
         {
             List<int> list = new List<int>();
-            int indexMin = TimPhanTuNhoNhatDauTien(arr);
+            int indexMin = TimPhanTuNhoNhatDauTien();
             for (int i = 0; i < arr.Length; i++)
                 if (arr[i] == arr[indexMin])
                     list.Add(i);
@@ -70,7 +100,7 @@ namespace C2_Bai1_Search
         }
 
         // 1.7
-        public static int TimPhanTuLeLonNhatDauTien(int[] arr)
+        public static int TimPhanTuLeLonNhatDauTien()
         {
             int index = -1;
             if (arr.Length > 0)
@@ -94,7 +124,7 @@ namespace C2_Bai1_Search
         }
 
         // 1.8
-        public static int TimPhanTuChanLonNhatSauCung(int[] arr)
+        public static int TimPhanTuChanLonNhatSauCung()
         {
             int index = -1;
             if (arr.Length > 0)
@@ -118,11 +148,11 @@ namespace C2_Bai1_Search
         }
 
         //1.9
-        public static int[] TimPhanTuX_Lap(int[] arr, int X)
+        public static int[] TimPhanTuX_Lap(int X)
         {
-            return BinSearch_Lap(arr, X).ToArray();
+            return BinSearch_Lap(X).ToArray();
         }
-        static List<int> BinSearch_Lap(int[] arr, int X)
+        static List<int> BinSearch_Lap(int X)
         {
             List<int> list = new List<int>();
             int low, up, mid;
@@ -142,12 +172,12 @@ namespace C2_Bai1_Search
         }
 
         //1.10
-        public static int[] TimPhanTuX_DeQuy(int[] arr, int X)
+        public static int[] TimPhanTuX_DeQuy(int X)
         {
-            return BinSearch_DeQuy(arr, X, 0, arr.Length - 1).ToArray();
+            return BinSearch_DeQuy(X, 0, arr.Length - 1).ToArray();
         }
 
-        static List<int> BinSearch_DeQuy(int[] arr, int X, int low, int up)
+        static List<int> BinSearch_DeQuy(int X, int low, int up)
         {
             List<int> list = new List<int>();
 
@@ -159,13 +189,14 @@ namespace C2_Bai1_Search
                     list.Add(mid);
 
                 if (X <= arr[mid]) // tìm kiếm ở nửa trái
-                    list.AddRange(BinSearch_DeQuy(arr, X, low, mid - 1));
+                    list.AddRange(BinSearch_DeQuy(X, low, mid - 1));
 
                 if (X >= arr[mid]) // tìm kiếm ở nửa phải
-                    list.AddRange(BinSearch_DeQuy(arr, X, mid + 1, up));
+                    list.AddRange(BinSearch_DeQuy(X, mid + 1, up));
             }
             return list;
         }
+
 
 
     }
