@@ -32,12 +32,12 @@ namespace C2_Bai1_Search
         public static void InKetQua()
         {
             XuatMang();
-            Console.Write("Nhap phan tu X: ");
-            int X = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Nhap phan tu X: ");
+            //int X = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("1.4. Phan tu nho nhat dau tien          : arr[{0}]", TimPhanTuNhoNhatDauTien());
+            Console.WriteLine("Tim Phan Tu Le Lon Nhat Dau Tien       : arr[{0}]", TimPhanTuLeLonNhatDauTien());
 
-        }
+         }
         // 1.1
         public static int TimPhanTuDauTien(int X)
         {
@@ -197,7 +197,8 @@ namespace C2_Bai1_Search
             return list;
         }
 
-
+        // class Danh sách sinh vien (diem)
+        //=> tìm tất cả các bạn sinh viên có đtb max, min 
 
     }
 }
