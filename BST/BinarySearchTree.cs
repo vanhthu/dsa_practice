@@ -203,7 +203,7 @@ namespace BST
             }
         }
         // Tìm nút có khóa X trong cây dùng phương pháp lặp
-        // Tìm nút lớn nhất trong cây
+        
         // Tìm nút có khóa lớn nhất trong cây
         public Node FindMax()
         {
@@ -224,11 +224,158 @@ namespace BST
             }
             return node; // Trả về nút lớn nhất
         }
+        
         // Tìm nút chẵn lớn nhất trong cây
-        // Tìm nút nhỏ nhất trong cây
+        public Node FindMaxEven()
+        {
+            return FindMaxEvenRec(root);
+        }
+
+        private Node FindMaxEvenRec(Node node)
+        {
+            Node maxEvenNode = null; // Biến để lưu trữ nút chẵn lớn nhất
+
+            while (node != null)
+            {
+                // Kiểm tra nếu giá trị nút là chẵn
+                if (node.key % 2 == 0)
+                {
+                    // Nếu chưa có maxEvenNode hoặc nút hiện tại lớn hơn nút lớn nhất đã tìm thấy
+                    if (maxEvenNode == null || node.key > maxEvenNode.key)
+                    {
+                        maxEvenNode = node;
+                    }
+                }
+
+                // Di chuyển qua cây cho tới khi không còn nút nào
+                if (node.right != null)
+                {
+                    node = node.right; // Di chuyển sang nút bên phải
+                }
+                else if (node.left != null)
+                {
+                    node = node.left; // Di chuyển sang nút bên trái
+                }
+                else
+                {
+                    break; // Không còn nút nào để di chuyển
+                }
+            }
+
+            return maxEvenNode; // Trả về nút chẵn lớn nhất
+        }
+        
+        // Tìm nút có khóa nhỏ nhất trong cây
+        public Node FindMin()
+        {
+            return FindMinRec(root);
+        }
+
+        private Node FindMinRec(Node node)
+        {
+            if (node == null)
+            {
+                return null; // Nếu cây rỗng, trả về null
+            }
+
+            // Di chuyển đến nút bên trái cho đến khi không còn nút nào
+            while (node.left != null)
+            {
+                node = node.left;
+            }
+            return node; // Trả về nút nhỏ nhất
+        }
+
         // Tìm nút chẵn nhỏ nhất trong cây
+        public Node FindMinEven()
+        {
+            return FindMinEvenRec(root);
+        }
+
+        private Node FindMinEvenRec(Node node)
+        {
+            Node minEvenNode = null; // Biến để lưu trữ nút chẵn nhỏ nhất
+
+            while (node != null)
+            {
+                // Kiểm tra nếu giá trị nút là chẵn
+                if (node.key % 2 == 0)
+                {
+                    // Nếu chưa có minEvenNode hoặc nút hiện tại nhỏ hơn nút nhỏ nhất đã tìm thấy
+                    if (minEvenNode == null || node.key < minEvenNode.key)
+                    {
+                        minEvenNode = node;
+                    }
+                }
+
+                // Di chuyển qua cây
+                if (node.left != null)
+                {
+                    node = node.left; // Di chuyển sang nút bên trái
+                }
+                else if (node.right != null)
+                {
+                    node = node.right; // Di chuyển sang nút bên phải
+                }
+                else
+                {
+                    break; // Không còn nút nào để di chuyển
+                }
+            }
+
+            return minEvenNode; // Trả về nút chẵn nhỏ nhất
+        }
+
         // Tìm nút lớn hơn và gần bằng nhất với nút khóa X
+        // Tìm nút có khóa lớn hơn hoặc gần bằng nhất với X (******************)
+        public Node FindGreaterOrEqual(int X)
+        {
+            return FindGreaterOrEqualRec(root, X);
+        }
+
+        private Node FindGreaterOrEqualRec(Node node, int X)
+        {
+            Node result = null; // Biến để lưu trữ nút lớn hơn hoặc cạnh bằng
+            while (node != null)
+            {
+                // Nếu khóa của nút hiện tại lớn hơn hoặc bằng X
+                if (node.key >= X)
+                {
+                    result = node; // Cập nhật kết quả
+                    node = node.left; // Di chuyển sang cây bên trái để tìm nút gần hơn với X
+                }
+                else
+                {
+                    node = node.right; // Di chuyển sang cây bên phải
+                }
+            }
+            return result; // Trả về nút tìm được
+        }
         // Tìm nút nhỏ hơn và gần bằng nhất với nút khóa X
+        // Tìm nút có khóa nhỏ hơn hoặc gần bằng nhất với X
+        public Node FindLessOrEqual(int X)
+        {
+            return FindLessOrEqualRec(root, X);
+        }
+
+        private Node FindLessOrEqualRec(Node node, int X)
+        {
+            Node result = null; // Biến để lưu trữ nút nhỏ hơn hoặc gần bằng
+            while (node != null)
+            {
+                // Nếu khóa của nút hiện tại nhỏ hơn hoặc bằng X
+                if (node.key <= X)
+                {
+                    result = node; // Cập nhật kết quả
+                    node = node.right; // Di chuyển sang cây bên phải để tìm nút lớn hơn nhưng vẫn nhỏ hơn hoặc bằng X
+                }
+                else
+                {
+                    node = node.left; // Di chuyển sang cây bên trái
+                }
+            }
+            return result; // Trả về nút tìm được
+        }
         // Đếm số nút trong cây
         // Đếm số nút chẵn trong cây
         // Đếm số nút lá
