@@ -376,15 +376,225 @@ namespace BST
             }
             return result; // Trả về nút tìm được
         }
+
         // Đếm số nút trong cây
+        public int CountNodes()
+        {
+            return CountNodesRec(root);
+        }
+
+        private int CountNodesRec(Node node)
+        {
+            if (node == null)
+            {
+                return 0; // Nếu nút hiện tại là null, trả về 0
+            }
+
+            // Đếm nút hiện tại và cộng thêm số nút bên trái và bên phải
+            return 1 + CountNodesRec(node.left) + CountNodesRec(node.right);
+        }
+
         // Đếm số nút chẵn trong cây
-        // Đếm số nút lá
+        public int CountEvenNodes()
+        {
+            return CountEvenNodesRec(root);
+        }
+
+        private int CountEvenNodesRec(Node node)
+        {
+            if (node == null)
+            {
+                return 0; // Nếu nút hiện tại là null, trả về 0
+            }
+
+            // Kiểm tra nếu khóa của nút hiện tại là chẵn
+            int count = (node.key % 2 == 0) ? 1 : 0;
+
+            // Cộng thêm số nút chẵn bên trái và bên phải
+            return count + CountEvenNodesRec(node.left) + CountEvenNodesRec(node.right);
+        }
+        // Nút lá là nút không có con, tức là nút mà cả hai con trái và con phải đều là null.
+        // Đếm số nút lá trong cây
+        public int CountLeafNodes()
+        {
+            return CountLeafNodesRec(root);
+        }
+
+        private int CountLeafNodesRec(Node node)
+        {
+            if (node == null)
+            {
+                return 0; // Nếu nút hiện tại là null, trả về 0
+            }
+
+            // Kiểm tra nếu nút hiện tại là nút lá
+            if (node.left == null && node.right == null)
+            {
+                return 1; // Nút lá
+            }
+
+            // Đếm số nút lá bên trái và bên phải
+            return CountLeafNodesRec(node.left) + CountLeafNodesRec(node.right);
+        }
         // Đếm số nút chẵn
         // Đếm số nút dương
+        // Đếm số nút dương trong cây
+        public int CountPositiveNodes()
+        {
+            return CountPositiveNodesRec(root);
+        }
+
+        private int CountPositiveNodesRec(Node node)
+        {
+            if (node == null)
+            {
+                return 0; // Nếu nút hiện tại là null, trả về 0
+            }
+
+            // Kiểm tra nếu khóa của nút hiện tại là dương
+            int count = (node.key > 0) ? 1 : 0;
+
+            // Cộng thêm số nút dương bên trái và bên phải
+            return count + CountPositiveNodesRec(node.left) + CountPositiveNodesRec(node.right);
+        }
         // Đếm số nút có đúng một nút con
+        // Đếm số nút có đúng một nút con trong cây
+        public int CountNodesWithOneChild()
+        {
+            return CountNodesWithOneChildRec(root);
+        }
+
+        private int CountNodesWithOneChildRec(Node node)
+        {
+            if (node == null)
+            {
+                return 0; // Nếu nút hiện tại là null, trả về 0
+            }
+
+            // Biến để lưu trữ số nút có đúng một con
+            int count = 0;
+
+            // Kiểm tra nếu nút hiện tại có đúng một con
+            if ((node.left == null && node.right != null) || (node.left != null && node.right == null))
+            {
+                count = 1; // Nút hiện tại có đúng một con
+            }
+
+            // Cộng thêm số nút có đúng một con bên trái và bên phải
+            return count + CountNodesWithOneChildRec(node.left) + CountNodesWithOneChildRec(node.right);
+        }
         // Tính tổng giá trị khóa các nút trong cây
+        // Tính tổng giá trị khóa của các nút trong cây
+        public int SumOfNodes()
+        {
+            return SumOfNodesRec(root);
+        }
+
+        private int SumOfNodesRec(Node node)
+        {
+            if (node == null)
+            {
+                return 0; // Nếu nút hiện tại là null, trả về 0
+            }
+
+            // Cộng giá trị khóa của nút hiện tại với tổng của các nút bên trái và bên phải
+            return node.key + SumOfNodesRec(node.left) + SumOfNodesRec(node.right);
+        }
         // Tính tổng giá trị khóa các nút chẵn trong cây
+        // Tính tổng giá trị khóa của các nút chẵn trong cây
+        public int SumOfEvenNodes()
+        {
+            return SumOfEvenNodesRec(root);
+        }
+
+        private int SumOfEvenNodesRec(Node node)
+        {
+            if (node == null)
+            {
+                return 0; // Nếu nút hiện tại là null, trả về 0
+            }
+
+            // Nếu khóa của nút hiện tại là chẵn, thêm vào tổng
+            int sum = (node.key % 2 == 0) ? node.key : 0;
+
+            // Cộng thêm tổng của các nút chẵn bên trái và bên phải
+            return sum + SumOfEvenNodesRec(node.left) + SumOfEvenNodesRec(node.right);
+        }
         // Tính tổng giá trị khóa các nút lá trong cây
+        // Tính tổng giá trị khóa của các nút lá trong cây
+        public int SumOfLeafNodes()
+        {
+            return SumOfLeafNodesRec(root);
+        }
+
+        private int SumOfLeafNodesRec(Node node)
+        {
+            if (node == null)
+            {
+                return 0; // Nếu nút hiện tại là null, trả về 0
+            }
+
+            // Nếu nút hiện tại là nút lá (không có con bên trái và bên phải)
+            if (node.left == null && node.right == null)
+            {
+                return node.key; // Trả về giá trị khóa của nút lá
+            }
+
+            // Cộng thêm tổng của các nút lá bên trái và bên phải
+            return SumOfLeafNodesRec(node.left) + SumOfLeafNodesRec(node.right);
+        }
+        // Đếm và tính tổng các nút của cây
+        // Đếm số nút và tính tổng giá trị khóa của các nút trong cây
+        public void CountAndSumNodes(out int count, out int sum)
+        {
+            count = 0; // Khởi tạo số nút
+            sum = 0;   // Khởi tạo tổng giá trị khóa
+            CountAndSumNodesRec(root, ref count, ref sum); // Gọi phương thức đệ quy
+        }
+
+        private void CountAndSumNodesRec(Node node, ref int count, ref int sum)
+        {
+            if (node == null)
+            {
+                return; // Nếu nút hiện tại là null, không làm gì cả
+            }
+
+            count++; // Tăng số lượng nút
+            sum += node.key; // Cộng giá trị khóa của nút hiện tại vào tổng
+
+            // Đệ quy cho các nút bên trái và bên phải
+            CountAndSumNodesRec(node.left, ref count, ref sum);
+            CountAndSumNodesRec(node.right, ref count, ref sum);
+        }
+
+        // Đếm số nút chẵn và tính tổng giá trị khóa của các nút chẵn trong cây
+        public void CountAndSumEvenNodes(out int count, out int sum)
+        {
+            count = 0; // Khởi tạo số nút chẵn
+            sum = 0;   // Khởi tạo tổng giá trị khóa của các nút chẵn
+            CountAndSumEvenNodesRec(root, ref count, ref sum); // Gọi phương thức đệ quy
+        }
+
+        private void CountAndSumEvenNodesRec(Node node, ref int count, ref int sum)
+        {
+            if (node == null)
+            {
+                return; // Nếu nút hiện tại là null, không làm gì cả
+            }
+
+            // Kiểm tra nếu khóa của nút hiện tại là chẵn
+            if (node.key % 2 == 0)
+            {
+                count++; // Tăng số lượng nút chẵn
+                sum += node.key; // Cộng giá trị khóa của nút chẵn vào tổng
+            }
+
+            // Đệ quy cho các nút bên trái và bên phải
+            CountAndSumEvenNodesRec(node.left, ref count, ref sum);
+            CountAndSumEvenNodesRec(node.right, ref count, ref sum);
+        }
+
+
         // Xác định mức của một nút trong cây
         // Xác định bậc của một nút trong cây
         // Xác định chiều cao của cây
