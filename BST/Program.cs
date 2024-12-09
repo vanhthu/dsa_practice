@@ -38,6 +38,20 @@ namespace BST
             //}
             //else { Console.WriteLine($"Nut {X} khong duoc tim thay trong cay"); }
 
+            // Tìm nút có giá trị X trong cay bằng phương pháp lặp
+            //Console.WriteLine("Nhap gia tri X can tim");
+            //int X = int.Parse(Console.ReadLine());
+
+            //Node foundNode = bst.FindIterative(X);
+            //if (foundNode != null)
+            //{
+            //    Console.WriteLine($"Nut {X} duoc tim thay.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"Nut {X} khong duoc tim thay.");
+            //}
+
             // Tìm nút lớn nhất trong cây và hiển thị giá trị của nó
             //Node maxNode = bst.FindMax();
             //if (maxNode != null)
@@ -130,12 +144,45 @@ namespace BST
             //Console.WriteLine($"Tong cac gia tri khoa: {totalSum}");
 
             // Đếm số nút chẵn và tính tổng giá trị khóa của các nút chẵn trong cây
-            int totalEvenCount;
-            int totalEvenSum;
-            bst.CountAndSumEvenNodes(out totalEvenCount, out totalEvenSum);
+            //int totalEvenCount;
+            //int totalEvenSum;
+            //bst.CountAndSumEvenNodes(out totalEvenCount, out totalEvenSum);
 
-            Console.WriteLine($"So nut chan trong cay: {totalEvenCount}");
-            Console.WriteLine($"Tong gia tri khoa cac nut chan trong cay: {totalEvenSum}");
+            //Console.WriteLine($"So nut chan trong cay: {totalEvenCount}");
+            //Console.WriteLine($"Tong gia tri khoa cac nut chan trong cay: {totalEvenSum}");
+
+            // Nhập giá trị X để tìm mức
+            //Console.WriteLine("Nhap gia tri X de xac dinh muc cua cay:");
+            //int X = int.Parse(Console.ReadLine());
+
+            //int level = bst.FindLevel(X);
+            //if (level != -1)
+            //{
+            //    Console.WriteLine($"Muc cua nut X {X} la: {level}");
+            //}
+
+            // Nhập giá trị X để xác định bậc của nó trong cây
+            //Console.WriteLine("Nhap gia tri X de xac dinh bac cua cay:");
+            //int X = int.Parse(Console.ReadLine());
+
+            //int degree = bst.FindDegree(X);
+            //if (degree != -1)
+            //{
+            //    Console.WriteLine($"Bac cua nut X {X} la: {degree}");
+            //}
+
+            // Tính chiều cao của cây và hiển thị kết quả
+            //int height = bst.FindHeight();
+            //Console.WriteLine($"Chieu cao cau cay: {height}");
+
+            // Nhập giá trị X để xóa nút
+            Console.WriteLine("Nhap gia tri X de xoa nut:");
+            int X = int.Parse(Console.ReadLine());
+
+            bst.root = bst.Delete(X); // Gọi phương thức xóa
+
+            Console.WriteLine($"Nut {X} da duoc xoa.");
+
 
 
             Console.ReadKey();

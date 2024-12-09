@@ -202,8 +202,28 @@ namespace BST
                 return FindRec(aRoot.right, X);
             }
         }
-        // Tìm nút có khóa X trong cây dùng phương pháp lặp
         
+        // Tìm nút có khóa X trong cây bằng phương pháp lặp
+        public Node FindIterative(int X)
+        {
+            Node current = root; // Bắt đầu từ nút gốc
+            while (current != null)
+            {
+                if (X == current.key)
+                {
+                    return current; // Trả về nút nếu tìm thấy
+                }
+                else if (X < current.key)
+                {
+                    current = current.left; // Di chuyển sang cây bên trái
+                }
+                else
+                {
+                    current = current.right; // Di chuyển sang cây bên phải
+                }
+            }
+            return null; // Nếu không tìm thấy nút, trả về null
+        }
         // Tìm nút có khóa lớn nhất trong cây
         public Node FindMax()
         {
@@ -595,10 +615,132 @@ namespace BST
         }
 
 
-        // Xác định mức của một nút trong cây
-        // Xác định bậc của một nút trong cây
-        // Xác định chiều cao của cây
+        // Xác định mức của một nút X trong cây
+        // mức của một nút được định nghĩa là khoảng cách từ nút gốc đến nút đó, với gốc cây có mức là 0.
+        public int FindLevel(int X)
+        {
+            return FindLevelRec(root, X, 0); // Bắt đầu từ nút gốc với mức là 0
+        }
+
+        private int FindLevelRec(Node node, int X, int level)
+        {
+            if (node == null)
+            {
+                return -1; // Nếu nút null, trả về -1 để biểu thị không tìm thấy
+            }
+
+            // Nếu tìm thấy nút, trả về mức
+            if (node.key == X)
+            {
+                return level;
+            }
+
+            // Nếu khóa X nhỏ hơn khóa của nút hiện tại, tìm trong cây bên trái
+            if (X < node.key)
+            {
+                return FindLevelRec(node.left, X, level + 1);
+            }
+            else // Nếu khóa X lớn hơn khóa của nút hiện tại, tìm trong cây bên phải
+            {
+                return FindLevelRec(node.right, X, level + 1);
+            }
+        }
+        // Xác định/Tìm bậc của một nút X trong cây
+        // Bậc của một nút trong BST có thể là 0 (nếu không có con nào), 1 (nếu có một con) hoặc 2 (nếu có cả hai con).
+        public int FindDegree(int X)
+        {
+            Node targetNode = FindIterative(X); // Tìm nút có khóa X
+            if (targetNode == null)
+            {
+                return -1; // Nếu không tìm thấy nút, trả về -1
+            }
+
+            // Tính bậc của nút
+            int degree = 0;
+            if (targetNode.left != null) degree++; // Nếu có con trái
+            if (targetNode.right != null) degree++; // Nếu có con phải
+
+            return degree; // Trả về bậc của nút
+        }
+
+
+        // Xác định/Tìm chiều cao của cây
+        // Chiều cao của một cây được định nghĩa là số lượng các mức (levels) từ nút gốc đến nút lá xa nhất.
+        // Chiều cao của một cây trống được tính là -1, cây chỉ có một nút gốc có chiều cao là 0
+        public int FindHeight()
+        {
+            return FindHeightRec(root); // Gọi phương thức đệ quy bắt đầu từ nút gốc
+        }
+
+        private int FindHeightRec(Node node)
+        {
+            if (node == null)
+            {
+                return -1; // Nếu nút là null, trả về -1
+            }
+
+            // Tính chiều cao của nút con trái và nút con phải
+            int leftHeight = FindHeightRec(node.left);
+            int rightHeight = FindHeightRec(node.right);
+
+            // Chiều cao của cây là chiều cao lớn nhất giữa hai nút con cộng 1 cho nút hiện tại
+            return Math.Max(leftHeight, rightHeight) + 1;
+        }
         // Xóa nút có giá trị X trong cây dùng phương pháp đệ quy
+        // Xóa nút có giá trị X trong cây
+        public Node Delete(int X)
+        {
+            return DeleteRec(root, X);
+        }
+
+        private Node DeleteRec(Node node, int X)
+        {
+            if (node == null)
+            {
+                return node; // Nếu nút là null, trả về null
+            }
+
+            // Di chuyển đến nút cần xóa
+            if (X < node.key)
+            {
+                node.left = DeleteRec(node.left, X); // Tìm và xóa trong cây bên trái
+            }
+            else if (X > node.key)
+            {
+                node.right = DeleteRec(node.right, X); // Tìm và xóa trong cây bên phải
+            }
+            else
+            {
+                // Nút cần xóa đã được tìm thấy
+                // Trường hợp 1: Nút có một con hoặc không có con
+                if (node.left == null)
+                {
+                    return node.right; // Trả về con phải (hoặc null)
+                }
+                else if (node.right == null)
+                {
+                    return node.left; // Trả về con trái (hoặc null)
+                }
+
+                // Trường hợp 2: Nút có hai con
+                // Tìm nút nhỏ nhất trong cây con bên phải
+                Node minNode = FindMin(node.right); // Hoặc bạn có thể dùng FindMax(node.left)
+                node.key = minNode.key; // Thay khóa của nút hiện tại bằng khóa của nút nhỏ nhất
+                node.right = DeleteRec(node.right, minNode.key); // Xóa nút nhỏ nhất khỏi cây con bên phải
+            }
+
+            return node; // Trả về nút (có thể đã được thay đổi)
+        }
+
+        // Phương thức để tìm nút nhỏ nhất (hoặc lớn nhất)
+        private Node FindMin(Node node)
+        {
+            while (node.left != null)
+            {
+                node = node.left; // Di chuyển đến nút bên trái cùng
+            }
+            return node; // Trả về nút nhỏ nhất
+        }
         // Xóa nút sau nút có giá trị X trong cây
         // Xóa nút trước nút có giá trị X trong cây
         // Xóa nút có giá trị X trong cây dùng phương pháp lặp
