@@ -23,7 +23,7 @@ namespace BST
             //bst.Add(100);
 
             // Thêm nút có giá trị khóa X vào cây dùng phương pháp lặp
-            bst.AddLoop(100);
+            //bst.AddLoop(100);
 
             // Tạo cây từ các số nhập từ bàn phím
             //bst.CreateTreeFromInput();
@@ -176,12 +176,80 @@ namespace BST
             //Console.WriteLine($"Chieu cao cau cay: {height}");
 
             // Nhập giá trị X để xóa nút
-            Console.WriteLine("Nhap gia tri X de xoa nut:");
-            int X = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Nhap gia tri X de xoa nut:");
+            //int X = int.Parse(Console.ReadLine());
+            //bst.root = bst.Delete(X); // Gọi phương thức xóa
+            //Console.WriteLine($"Nut {X} da duoc xoa.");
 
-            bst.root = bst.Delete(X); // Gọi phương thức xóa
+            // Nhập giá trị X để xóa nút sau nút có giá trị X (************************)
+            //Console.WriteLine("Nhap gia tri X de xoa nut sau gia tri X:");
+            //int X = int.Parse(Console.ReadLine());
 
-            Console.WriteLine($"Nut {X} da duoc xoa.");
+            //bst.root = bst.DeleteAfterX(X); // Gọi phương thức xóa
+
+            //if (bst.root == null)
+            //{
+            //    Console.WriteLine($"Nut dung sau khoa {X} da duoc xoa.");
+            //}
+
+            // Nhập giá trị X để xóa nút
+            //Console.WriteLine("Nhap X de xoa nut:");
+            //int X = int.Parse(Console.ReadLine());
+
+            //bst.root = bst.DeleteIterative(X); // Gọi phương thức xóa
+
+            //Console.WriteLine($"Nut {X} da duoc xoa.");
+
+            // Lấy và hiển thị các nút con trái có một nút lá
+            //List<int> nutConTraiCoMotNutLa = bst.LietKeNutConTraiCoMotNutLa(bst.root);
+
+            //Console.WriteLine("Cac nut con trai co 1 nut la:");
+            //foreach (var key in nutConTraiCoMotNutLa)
+            //{
+            //    Console.WriteLine(key);
+            //}
+
+
+            // Lấy và hiển thị các nút con phải có một nút lá (*********************)
+            // Lấy và hiển thị các nút con phải có một nút lá
+            //List<int> nutConPhaiCoMotNutLa = bst.LietKeNutConPhaiCoMotNutLa(bst.root);
+
+            //Console.WriteLine("Các nút con phải có 1 nút lá:");
+            //if (nutConPhaiCoMotNutLa.Count == 0)
+            //{
+            //    Console.WriteLine("Không có nút con phải nào có một nút lá.");
+            //}
+            //else
+            //{
+            //    foreach (var key in nutConPhaiCoMotNutLa)
+            //    {
+            //        Console.WriteLine(key);
+            //    }
+            //}
+
+            // Liệt kê các nút con phải có một nút lá
+            //Console.WriteLine("Danh sách các nút con phải có nút lá:");
+            //bst.ListRightChildrenWithLeaves(bst.root);
+
+            // Liệt kê các nút con trái có một nút lá
+            //Console.WriteLine("Danh sách các nút con trái có nút lá:");
+            //bst.ListLeftChildrenWithLeaves(bst.root);
+
+            // Liệt kê các nút chẵn trên cây
+            //Console.WriteLine("Danh sách các nút chẵn:");
+            //bst.ListEvenNodes(bst.root);
+
+            // Liệt kê các nút lẻ trên cây
+            //Console.WriteLine("Danh sách các nút lẻ:");
+            //bst.ListOddNodes(bst.root);
+
+            // Liệt kê các nút chẵn có 1 nút lá
+            Console.WriteLine("Danh sách các nút chẵn có 1 nút lá:");
+            bst.ListEvenNodesWithLeaves(bst.root);
+
+            //bst.Display(bst.root);
+
+
 
 
 

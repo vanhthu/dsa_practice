@@ -687,7 +687,11 @@ namespace BST
             return Math.Max(leftHeight, rightHeight) + 1;
         }
         // Xóa nút có giá trị X trong cây dùng phương pháp đệ quy
-        // Xóa nút có giá trị X trong cây
+        // Nếu nút cần xóa là nút lá (không có con nào), bạn chỉ cần xóa nút.
+        // Nếu nút cần xóa có một con(trái hoặc phải), bạn thay thế nó bằng con còn lại.
+        // Nếu nút cần xóa có hai con, bạn phải tìm một nút thay thế
+        // (thường là nút nhỏ nhất trong cây con bên phải hoặc lớn nhất trong cây con bên trái)
+        // để thay thế nút đó và sau đó xóa nút thay thế.
         public Node Delete(int X)
         {
             return DeleteRec(root, X);
@@ -741,12 +745,248 @@ namespace BST
             }
             return node; // Trả về nút nhỏ nhất
         }
+
+
         // Xóa nút sau nút có giá trị X trong cây
-        // Xóa nút trước nút có giá trị X trong cây
+        public Node DeleteAfterX(int X)
+        {
+            Node targetNode = FindIterative(X); // Tìm nút có giá trị X
+            if (targetNode == null)
+            {
+                return null; // Nếu không tìm thấy nút X
+            }
+
+            Node nodeToDelete = targetNode.right; // Nút tiếp theo là nút bên phải của X
+            if (nodeToDelete == null)
+            {
+                return null; // Không có nút nào đứng sau nút X
+            }
+
+            // Tìm nút nhỏ nhất trong nút bên phải
+            Node minNode = FindMin(nodeToDelete);
+
+            // Xóa nút đó
+            if (minNode != null)
+            {
+                nodeToDelete = DeleteRec(nodeToDelete, minNode.key);
+            }
+
+            targetNode.right = nodeToDelete; // Cập nhật con phải của nút X
+
+            return targetNode; // Trả về nút X đã được cập nhật
+        }
+        // Xóa nút trước nút có giá trị X trong cây **************
         // Xóa nút có giá trị X trong cây dùng phương pháp lặp
+        // Xóa nút có giá trị X trong cây bằng phương pháp lặp
+        public Node DeleteIterative(int X)
+        {
+            Node current = root;
+            Node parent = null;
+
+            // Tìm nút cần xóa và lưu trữ nút cha
+            while (current != null && current.key != X)
+            {
+                parent = current;
+                if (X < current.key)
+                {
+                    current = current.left; // Di chuyển sang cây bên trái
+                }
+                else
+                {
+                    current = current.right; // Di chuyển sang cây bên phải
+                }
+            }
+
+            // Nếu không tìm thấy nút cần xóa
+            if (current == null)
+            {
+                Console.WriteLine($"Nút có khóa {X} không tồn tại trong cây.");
+                return root; // Trả về gốc cây không thay đổi
+            }
+
+            // Bắt đầu xóa nút
+            // Trường hợp 1: Nút cần xóa có một con hoặc không có con
+            if (current.left == null && current.right == null)
+            {
+                if (parent == null)
+                {
+                    root = null; // Nếu nút gốc được xóa
+                }
+                else if (parent.left == current)
+                {
+                    parent.left = null; // Xóa nút bên trái
+                }
+                else
+                {
+                    parent.right = null; // Xóa nút bên phải
+                }
+            }
+            else if (current.left == null) // Nút chỉ có con phải
+            {
+                if (parent == null)
+                {
+                    root = current.right; // Cập nhật gốc
+                }
+                else if (parent.left == current)
+                {
+                    parent.left = current.right; // Thay thế bằng con phải
+                }
+                else
+                {
+                    parent.right = current.right; // Thay thế bằng con phải
+                }
+            }
+            else if (current.right == null) // Nút chỉ có con trái
+            {
+                if (parent == null)
+                {
+                    root = current.left; // Cập nhật gốc
+                }
+                else if (parent.left == current)
+                {
+                    parent.left = current.left; // Thay thế bằng con trái
+                }
+                else
+                {
+                    parent.right = current.left; // Thay thế bằng con trái
+                }
+            }
+            else // Trường hợp nút cần xóa có hai con
+            {
+                // Tìm nút nhỏ nhất trong cây con bên phải
+                Node minNode = FindMin(current.right); // Nút nhỏ nhất
+                int minValue = minNode.key; // Lưu giá trị của nút nhỏ nhất
+
+                // Xóa nút nhỏ nhất
+                current.right = DeleteIterative(minValue); // Có thể gọi delete cho nút nhỏ nhất
+
+                // Cập nhật giá trị của nút cần xóa với giá trị của nút nhỏ nhất
+                current.key = minValue;
+            }
+
+            return root; // Trả về gốc cây đã được cập nhật
+        }
 
 
+        // Phương thức để lấy các nút con trái có 1 nút lá
+        public List<int> LietKeNutConTraiCoMotNutLa(Node node)
+        {
+            List<int> kq = new List<int>();
+
+            // Đệ quy duyệt cây
+            void LietKeNutConTraiCoMotNutLaRec(Node current)
+            {
+                if (current == null)
+                    return;
+
+                // Kiểm tra nếu nút bên trái có một nút lá
+                if (current.left != null && current.left.left == null && current.left.right == null)
+                {
+                    kq.Add(current.left.key);
+                }
+
+                // Tiếp tục duyệt cây
+                LietKeNutConTraiCoMotNutLaRec(current.left);
+                LietKeNutConTraiCoMotNutLaRec(current.right);
+            }
+
+            LietKeNutConTraiCoMotNutLaRec(node);
+            return kq;
+        }
+
+        // Phương thức liệt kê các nút con trái có nút lá cách 2
+        public void ListLeftChildrenWithLeaves(Node node)
+        {
+            if (node != null)
+            {
+                // Kiểm tra xem nút có con bên trái hay không
+                if (node.left != null)
+                {
+                    // Kiểm tra xem con bên trái có phải là nút lá hay không
+                    if (node.left.left == null && node.left.right == null)
+                    {
+                        Console.WriteLine("Nút con trái có nút lá: " + node.left.key);
+                    }
+                }
+                // Duyệt các nút con bên trái và bên phải
+                ListLeftChildrenWithLeaves(node.left);
+                ListLeftChildrenWithLeaves(node.right);
+            }
+        }
 
 
+        // Liệt kê các nút con phải có một nút lá trên cây
+        // Phương thức liệt kê các nút con phải có một nút lá
+        public void ListRightChildrenWithLeaves(Node node)
+        {
+            if (node != null)
+            {
+                // Kiểm tra xem nút có con bên phải hay không
+                if (node.right != null)
+                {
+                    // Kiểm tra xem con bên phải có phải là nút lá hay không
+                    if (node.right.left == null && node.right.right == null)
+                    {
+                        Console.WriteLine("Nút con phải có nút lá: " + node.right.key);
+                    }
+                }
+                // Duyệt các nút con bên trái và bên phải
+                ListRightChildrenWithLeaves(node.left);
+                ListRightChildrenWithLeaves(node.right);
+            }
+        }
+
+        // Liệt kê các nút chẵn trên cây
+        // Phương thức liệt kê các nút chẵn trong cây
+        public void ListEvenNodes(Node node)
+        {
+            if (node != null)
+            {
+                // Kiểm tra xem giá trị của nút có phải là chẵn không
+                if (node.key % 2 == 0)
+                {
+                    Console.WriteLine("Nút chẵn: " + node.key);
+                }
+                // Duyệt qua các nút con trái và phải
+                ListEvenNodes(node.left);
+                ListEvenNodes(node.right);
+            }
+        }
+        // Liệt kê các nút lẻ trên cây
+        public void ListOddNodes(Node node)
+        {
+            if (node != null)
+            {
+                // Kiểm tra xem giá trị của nút có phải là chẵn không
+                if (node.key % 2 != 0)
+                {
+                    Console.WriteLine("Nut le: " + node.key);
+                }
+                // Duyệt qua các nút con trái và phải
+                ListOddNodes(node.left);
+                ListOddNodes(node.right);
+            }
+        }
+        // Liệt kê các nút chẵn có một nút lá trên cây
+        // Phương thức liệt kê các nút chẵn có một nút lá
+        public void ListEvenNodesWithLeaves(Node node)
+        {
+            if (node != null)
+            {
+                // Kiểm tra xem giá trị của nút có phải là chẵn không
+                if (node.key % 2 == 0)
+                {
+                    // Kiểm tra con trái và con phải
+                    if ((node.left != null && node.left.left == null && node.left.right == null) ||
+                        (node.right != null && node.right.left == null && node.right.right == null))
+                    {
+                        Console.WriteLine("Nút chẵn có 1 nút lá: " + node.key);
+                    }
+                }
+                // Duyệt qua các nút con trái và phải
+                ListEvenNodesWithLeaves(node.left);
+                ListEvenNodesWithLeaves(node.right);
+            }
+        }
     }
 }
