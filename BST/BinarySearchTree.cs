@@ -614,6 +614,31 @@ namespace BST
             CountAndSumEvenNodesRec(node.right, ref count, ref sum);
         }
 
+        // Phương thức đếm số nút có một nút lá trong cây
+        public int CountNodesWithOneLeaf(Node node)
+        {
+            // Nếu nút null, trả về 0
+            if (node == null)
+                return 0;
+
+            // Đếm số nút trong cây con trái và cây con phải
+            int count = CountNodesWithOneLeaf(node.left) + CountNodesWithOneLeaf(node.right);
+
+            // Kiểm tra xem nút hiện tại có một nút lá không
+            if ((node.left != null && IsLeaf(node.left) && node.right == null) ||
+                (node.right != null && IsLeaf(node.right) && node.left == null))
+            {
+                count++; // Tăng biến đếm nếu điều kiện thỏa mãn
+            }
+
+            return count; // Trả về tổng số nút
+        }
+        private bool IsLeaf(Node node)
+        {
+            return node != null && node.left == null && node.right == null;
+        }
+
+
 
         // Xác định mức của một nút X trong cây
         // mức của một nút được định nghĩa là khoảng cách từ nút gốc đến nút đó, với gốc cây có mức là 0.
@@ -916,7 +941,6 @@ namespace BST
 
 
         // Liệt kê các nút con phải có một nút lá trên cây
-        // Phương thức liệt kê các nút con phải có một nút lá
         public void ListRightChildrenWithLeaves(Node node)
         {
             if (node != null)
@@ -936,8 +960,56 @@ namespace BST
             }
         }
 
+        // Liệt kê các nút con phải có một hai lá trên cây
+        // Phương thức liệt kê các nút con phải có hai nút lá
+        public void ListRightChildrenWithTwoLeaves(Node node)
+        {
+            if (node != null)
+            {
+                // Kiểm tra xem nút có con bên phải hay không
+                if (node.right != null)
+                {
+                    // Kiểm tra cả hai con bên trái và bên phải của nút con bên phải có phải là nút lá hay không
+                    if (node.right.left != null && node.right.left.left == null && node.right.left.right == null &&
+                        node.right.right != null && node.right.right.left == null && node.right.right.right == null)
+                    {
+                        Console.WriteLine("Nút con phải có hai nút lá: " + node.right.key);
+                    }
+                }
+                // Duyệt qua các nút con bên trái và phải
+                ListRightChildrenWithTwoLeaves(node.left);
+                ListRightChildrenWithTwoLeaves(node.right);
+            }
+        }
+        /*
+         // Phương thức kiểm tra xem một nút có phải là nút lá hay không
+        private bool IsLeaf(Node node)
+        {
+            return node != null && node.left == null && node.right == null;
+        }
+
+        // Phương thức liệt kê các nút con phải có hai nút lá
+        public void ListRightChildrenWithTwoLeaves(Node node)
+        {
+            if (node != null)
+            {
+                // Kiểm tra xem nút có con bên phải hay không
+                if (node.right != null)
+                {
+                    // Kiểm tra xem cả hai con bên trái và bên phải của nút con bên phải có phải là nút lá hay không
+                    if (IsLeaf(node.right.left) && IsLeaf(node.right.right))
+                    {
+                        Console.WriteLine("Nút con phải có hai nút lá: " + node.right.key);
+                    }
+                }
+                // Duyệt qua các nút con bên trái và phải
+                ListRightChildrenWithTwoLeaves(node.left);
+                ListRightChildrenWithTwoLeaves(node.right);
+            }
+        }
+         */
+
         // Liệt kê các nút chẵn trên cây
-        // Phương thức liệt kê các nút chẵn trong cây
         public void ListEvenNodes(Node node)
         {
             if (node != null)
@@ -968,7 +1040,6 @@ namespace BST
             }
         }
         // Liệt kê các nút chẵn có một nút lá trên cây
-        // Phương thức liệt kê các nút chẵn có một nút lá
         public void ListEvenNodesWithLeaves(Node node)
         {
             if (node != null)
@@ -986,6 +1057,23 @@ namespace BST
                 // Duyệt qua các nút con trái và phải
                 ListEvenNodesWithLeaves(node.left);
                 ListEvenNodesWithLeaves(node.right);
+            }
+        }
+        // Phương thức liệt kê các nút có một nút lá
+        public void ListNodesWithOneLeaf(Node node)
+        {
+            if (node != null)
+            {
+                // Kiểm tra xem nút hiện tại có một nút lá không
+                if ((node.left != null && IsLeaf(node.left) && node.right == null) ||
+                    (node.right != null && IsLeaf(node.right) && node.left == null))
+                {
+                    Console.WriteLine("Nút có một nút lá: " + node.key);
+                }
+
+                // Duyệt qua các nút con bên trái và bên phải
+                ListNodesWithOneLeaf(node.left);
+                ListNodesWithOneLeaf(node.right);
             }
         }
     }

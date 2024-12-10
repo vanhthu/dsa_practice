@@ -151,6 +151,12 @@ namespace BST
             //Console.WriteLine($"So nut chan trong cay: {totalEvenCount}");
             //Console.WriteLine($"Tong gia tri khoa cac nut chan trong cay: {totalEvenSum}");
 
+
+            // ĐẾM SỐ NÚT CÓ 1 NÚT LÁ TRONG CÂY VÀ HIỂN THỊ RA KẾT QUẢ
+            // Đếm số nút có một nút lá
+            //int count = bst.CountNodesWithOneLeaf(bst.root);
+            //Console.WriteLine("Số nút có một nút lá: " + count);
+
             // Nhập giá trị X để tìm mức
             //Console.WriteLine("Nhap gia tri X de xac dinh muc cua cay:");
             //int X = int.Parse(Console.ReadLine());
@@ -244,12 +250,18 @@ namespace BST
             //bst.ListOddNodes(bst.root);
 
             // Liệt kê các nút chẵn có 1 nút lá
-            Console.WriteLine("Danh sách các nút chẵn có 1 nút lá:");
-            bst.ListEvenNodesWithLeaves(bst.root);
+            //Console.WriteLine("Danh sách các nút chẵn có 1 nút lá:");
+            //bst.ListEvenNodesWithLeaves(bst.root);
+
+            // Liệt kê các nút con phải có hai nút lá
+            //Console.WriteLine("Danh sách các nút con phải có hai nút lá:");
+            //bst.ListRightChildrenWithTwoLeaves(bst.root);
 
             //bst.Display(bst.root);
 
-
+            // Liệt kê các nút có một nút lá
+            Console.WriteLine("Danh sách các nút có một nút lá:");
+            bst.ListNodesWithOneLeaf(bst.root);
 
 
 
