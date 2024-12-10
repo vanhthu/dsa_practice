@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C1_Bai2", "C1_Bai2\C1_Bai2.csproj", "{4385D317-A6A8-46CA-9C79-96F9B532D66B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BST", "BST\BST.csproj", "{C92B3419-B6A9-42AC-BB34-490BFCDB7536}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BST", "BST\BST.csproj", "{C92B3419-B6A9-42AC-BB34-490BFCDB7536}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\LinkedList.csproj", "{B3379BE4-DC32-4090-A52D-7E0CE62BF1ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C92B3419-B6A9-42AC-BB34-490BFCDB7536}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C92B3419-B6A9-42AC-BB34-490BFCDB7536}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C92B3419-B6A9-42AC-BB34-490BFCDB7536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3379BE4-DC32-4090-A52D-7E0CE62BF1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3379BE4-DC32-4090-A52D-7E0CE62BF1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3379BE4-DC32-4090-A52D-7E0CE62BF1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3379BE4-DC32-4090-A52D-7E0CE62BF1ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
