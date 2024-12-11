@@ -70,6 +70,126 @@ namespace LinkedList
                 current.Next = newNode;
             }
         }
+        //1.6.1 Thêm node có giá trị X vào vị trí kề sau nút có giá trị lẻ lớn nhất sau cùng trong danh sách.
+        public void AddAfterOddMaxLast(int value)
+        {
+            if (Head == null) return;
+
+            Node current = Head;
+            Node oddMaxNode = null;
+
+            // Tìm nút có giá trị lẻ lớn nhất sau cùng
+            while (current != null)
+            {
+                if (current.Data % 2 != 0) // Nếu là số lẻ
+                {
+                    oddMaxNode = current; // Cập nhật nút lẻ lớn nhất
+                }
+                current = current.Next;
+            }
+
+            // Nếu tìm thấy nút lẻ lớn nhất, thêm nút mới vào sau nó
+            if (oddMaxNode != null)
+            {
+                Node newNode = new Node(value);
+                newNode.Next = oddMaxNode.Next; // Đặt next của nút mới
+                oddMaxNode.Next = newNode; // Thêm nút mới vào sau nút lẻ lớn nhất
+            }
+        }
+        //1.6.2 Thêm node có giá trị X vào vị trí kề sau nút có giá trị lẻ nhỏ nhất sau cùng trong danh sách.
+        public void AddAfterOddMinLast(int value)
+        {
+            if (Head == null) return;
+
+            Node current = Head;
+            Node oddMinNode = null;
+            int minOddValue = int.MaxValue;
+
+            // Tìm giá trị lẻ nhỏ nhất trong danh sách
+            while (current != null)
+            {
+                if (current.Data % 2 != 0 && current.Data < minOddValue)
+                {
+                    minOddValue = current.Data; // Cập nhật giá trị nhỏ nhất
+                }
+                current = current.Next;
+            }
+
+            // Reset current để tìm nút lẻ nhỏ nhất sau cùng
+            current = Head;
+
+            // Tìm nút lẻ nhỏ nhất sau cùng
+            while (current != null)
+            {
+                if (current.Data == minOddValue)
+                    oddMinNode = current; // Cập nhật nút lẻ nhỏ nhất
+                current = current.Next;
+            }
+
+            // Nếu tìm thấy nút lẻ nhỏ nhất, thêm nút mới vào sau nút đó
+            if (oddMinNode != null)
+            {
+                Node newNode = new Node(value);
+                newNode.Next = oddMinNode.Next; // Đặt next của nút mới
+                oddMinNode.Next = newNode; // Thêm nút mới vào sau nút lẻ nhỏ nhất
+            }
+        }
+        //1.6.3 Thêm node có giá trị X vào vị trí kề sau nút có giá trị lẻ lớn nhất đầu tiên trong danh sách.
+        public void AddAfterOddMaxFirst(int value)
+        {
+            if (Head == null) return;
+
+            Node current = Head;
+            Node oddMaxNode = null;
+
+            // Tìm nút lẻ lớn nhất đầu tiên
+            while (current != null)
+            {
+                if (current.Data % 2 != 0) // Nếu là số lẻ
+                {
+                    if (oddMaxNode == null || current.Data > oddMaxNode.Data)
+                    {
+                        oddMaxNode = current; // Cập nhật nếu giá trị lớn hơn
+                    }
+                }
+                current = current.Next;
+            }
+
+            // Nếu tìm thấy nút lẻ lớn nhất, thêm nút mới vào sau nó
+            if (oddMaxNode != null)
+            {
+                Node newNode = new Node(value);
+                newNode.Next = oddMaxNode.Next; // Gán next của nút mới
+                oddMaxNode.Next = newNode; // Chèn nút mới vào sau nút lẻ lớn nhất
+            }
+        }
+        //1.6.4 Thêm node có giá trị X vào vị trí kề sau nút có giá trị lẻ nhỏ nhất đầu tiên trong danh sách.
+        public void AddAfterOddMinFirst(int value)
+        {
+            if (Head == null) return;
+
+            Node current = Head;
+            Node oddMinNode = null;
+
+            // Tìm nút có giá trị lẻ nhỏ nhất đầu tiên
+            while (current != null)
+            {
+                if (current.Data % 2 != 0) // Nếu là số lẻ
+                {
+                    oddMinNode = current; // Cập nhật nút lẻ nhỏ nhất đầu tiên
+                    break; // Thoát vòng lặp
+                }
+                current = current.Next;
+            }
+
+            // Nếu tìm thấy nút lẻ nhỏ nhất, thêm nút mới vào sau nó
+            if (oddMinNode != null)
+            {
+                Node newNode = new Node(value);
+                newNode.Next = oddMinNode.Next; // Đặt next của nút mới
+                oddMinNode.Next = newNode; // Thêm nút mới vào sau nút lẻ nhỏ nhất
+            }
+        }
 
         //1.7. Thêm node có giá trị Y trước node có giá trị X trong danh sách.
         public void AddBefore(int value, int beforeValue)
@@ -94,6 +214,105 @@ namespace LinkedList
                 Node newNode = new Node(value);
                 newNode.Next = current.Next;
                 current.Next = newNode;
+            }
+        }
+        //1.7.1 Thêm node có giá trị X vào vị trí kề trước nút có giá trị lẻ lớn nhất sau cùng trong danh sách.
+        public void AddBeforeOddMaxLast(int value)
+        {
+            if (Head == null) return;
+
+            Node current = Head;
+            Node oddMaxNode = null;
+            Node prevNode = null; // Biến để lưu nút trước nút lẻ lớn nhất
+
+            // Tìm nút lẻ lớn nhất sau cùng
+            while (current != null)
+            {
+                if (current.Data % 2 != 0) // Nếu là số lẻ
+                {
+                    oddMaxNode = current; // Cập nhật nút lẻ lớn nhất
+                }
+                current = current.Next;
+            }
+
+            // Nếu không tìm thấy nút lẻ lớn nhất thì dừng
+            if (oddMaxNode == null) return;
+
+            // Thiết lập current lại để tìm nút trước nút lẻ lớn nhất
+            current = Head;
+            while (current != null)
+            {
+                if (current.Next == oddMaxNode)
+                {
+                    prevNode = current; // Lưu lại nút trước
+                    break; // Thoát vòng lặp
+                }
+                current = current.Next;
+            }
+
+            // Nếu nút trước không phải là null tức là nút lẻ lớn nhất không phải là đầu danh sách
+            if (prevNode != null)
+            {
+                Node newNode = new Node(value);
+                newNode.Next = oddMaxNode; // Đặt next của nút mới là nút lẻ lớn nhất
+                prevNode.Next = newNode; // Chèn nút mới vào trước nút lẻ lớn nhất
+            }
+            else
+            {
+                // Nếu nút lẻ lớn nhất là nút đầu tiên
+                AddToFront(value); // Thêm nút mới vào đầu danh sách
+            }
+        }
+        //1.7.2 Thêm node có giá trị X vào vị trí kề trước nút có giá trị lẻ lớn nhất đầu tiên trong danh sách.
+        public void AddBeforeOddMaxFirst(int value)
+        {
+            if (Head == null) return; // Kiểm tra nếu danh sách rỗng
+
+            Node current = Head;
+            Node oddMaxNode = null; // Nút có giá trị lẻ lớn nhất
+            Node prevNode = null; // Nút trước nút lẻ lớn nhất
+
+            // Tìm nút lẻ lớn nhất đầu tiên
+            while (current != null)
+            {
+                // Nếu nút hiện tại là số lẻ và (nó lớn hơn oddMaxNode hoặc oddMaxNode chưa được tìm thấy)
+                if (current.Data % 2 != 0 && (oddMaxNode == null || current.Data > oddMaxNode.Data))
+                {
+                    oddMaxNode = current; // Cập nhật nút lẻ lớn nhất
+                }
+                current = current.Next;
+            }
+
+            // Nếu không tìm thấy nút lẻ lớn nhất thì dừng
+            if (oddMaxNode == null) return;
+
+            // Reset current để tìm nút trước
+            current = Head;
+
+            // Tìm nút trước nút lẻ lớn nhất
+            while (current != null)
+            {
+                if (current.Next == oddMaxNode)
+                {
+                    prevNode = current; // Lưu nút trước
+                    break; // Thoát vòng lặp
+                }
+                current = current.Next;
+            }
+
+            // Tạo nút mới với giá trị X
+            Node newNode = new Node(value);
+
+            // Nếu tìm thấy nút trước thì chèn nút mới vào trước nút lẻ lớn nhất
+            if (prevNode != null)
+            {
+                newNode.Next = oddMaxNode; // Đặt next của nút mới là nút lẻ lớn nhất
+                prevNode.Next = newNode; // Chèn nút mới vào trước nút lẻ lớn nhất
+            }
+            else
+            {
+                // Nếu nút lẻ lớn nhất là nút đầu tiên
+                AddToFront(value); // Thêm nút mới vào đầu danh sách
             }
         }
 

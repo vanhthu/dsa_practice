@@ -12,9 +12,10 @@ namespace LinkedList
             // Thêm đầu
             list.AddToFront(5);
             list.AddToFront(3);
-            //list.AddToFront(3);
+            list.AddToFront(3);
 
             // Thêm cuối
+            list.AddToEnd(7);            
             list.AddToEnd(7);
             list.AddToEnd(2);
 
@@ -25,6 +26,24 @@ namespace LinkedList
             list.AddBefore(6, 7);
 
             list.PrintList();
+
+            //list.AddAfterOddMaxLast(10); // Thêm tháng giá trị 10 vào sau nút lẻ lớn nhất sau cùng
+            //list.PrintList();
+
+            //list.AddAfterOddMinLast(10); // Thêm tháng giá trị 10 vào sau nút lẻ nhỏ nhất sau cùng
+            //list.PrintList();
+
+            //list.AddAfterOddMaxFirst(10); // Thêm nút có giá trị 10 vào sau nút lẻ lớn nhất đầu tiên
+            //list.PrintList();
+
+            //list.AddAfterOddMinFirst(10); // Thêm nút có giá trị 10 vào sau nút lẻ nhỏ nhất đầu tiên
+            //list.PrintList(); 
+
+            //list.AddBeforeOddMaxLast(10); // Thêm nút có giá trị 10 vào trước nút lẻ lớn nhất sau cùng
+            //list.PrintList(); 
+
+            //list.AddBeforeOddMaxFirst(10); // Thêm nút có giá trị 10 vào trước nút lẻ lớn nhất đầu tiên
+            //list.PrintList(); 
 
 
             //Console.WriteLine();
@@ -75,8 +94,8 @@ namespace LinkedList
             //}
 
             //1.9.2. Tìm nút có giá trị nhỏ nhất sau cùng trong danh sách. 
-            Node minNode = list.FindMinFirst();
-            Console.WriteLine(minNode != null ? "Giá trị nhỏ nhất đầu tiên: " + minNode.Data : "Danh sách rỗng.");
+            //Node minNode = list.FindMinFirst();
+            //Console.WriteLine(minNode != null ? "Giá trị nhỏ nhất đầu tiên: " + minNode.Data : "Danh sách rỗng.");
 
             //1.10. Tìm nút có giá trị chẵn lớn nhất trong danh sách
             //Node maxEven = list.FindMaxEven();
