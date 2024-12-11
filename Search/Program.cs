@@ -31,7 +31,37 @@
             //Console.WriteLine($"TKTT so chinh phuong dau tien: {array[indexFirstPerfectSquare]} tại chỉ số {indexFirstPerfectSquare}");
 
             // TÌM KIẾM NHỊ PHÂN
-            
+            //int indexMaxEven = Search1.BinarySearchMaxEven();
+            //if (indexMaxEven != -1)
+            //{
+            //    Console.WriteLine($"TKNB so chan lon nhat: {array[indexMaxEven]} tai chi so {indexMaxEven}");
+            //}
+
+            //int indexMinEven = Search1.BinarySearchMinEven();
+            //if (indexMinEven != -1)
+            //{
+            //    Console.WriteLine($"TKNB so chan nho nhat: {array[indexMinEven]} tai chi so {indexMinEven}");
+            //}
+
+            //int indexPrimeFirst = Search1.BinarySearchFirstPrime();
+            //if (indexPrimeFirst != -1)
+            //{
+            //    Console.WriteLine($"TKNB so nguyen to dau tien: {array[indexPrimeFirst]} tai chi so {indexPrimeFirst}");
+            //}
+
+
+            // cái này không có khả thi
+            int indexPrimeLast = Search1.BinarySearchLastPrime();
+            if (indexPrimeLast != -1)
+            {
+                Console.WriteLine($"TKNB so nguyen to cuoi cung: {array[indexPrimeLast]} tai chi so {indexPrimeLast}");
+            }
+            int indexPrimeLast1 = Search1.FindLastPrime();
+            if (indexPrimeLast1 != -1)
+            {
+                Console.WriteLine($"TKNB so nguyen to cuoi cung: {array[indexPrimeLast1]} tai chi so {indexPrimeLast1}");
+            }
+
 
             Console.ReadKey();
         }
