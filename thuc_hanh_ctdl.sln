@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C1_Bai2", "C1_Bai2\C1_Bai2.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BST", "BST\BST.csproj", "{C92B3419-B6A9-42AC-BB34-490BFCDB7536}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\LinkedList.csproj", "{B3379BE4-DC32-4090-A52D-7E0CE62BF1ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList", "LinkedList\LinkedList.csproj", "{B3379BE4-DC32-4090-A52D-7E0CE62BF1ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search", "Search\Search.csproj", "{7C593D44-C99D-44E7-9E67-A94FB4D847DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Search", "Search\Search.csproj", "{7C593D44-C99D-44E7-9E67-A94FB4D847DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyPhongGame", "CuaHangMayTinh\QuanLyPhongGame.csproj", "{4B75537F-79DB-413A-80B2-E75C45DD7A91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7C593D44-C99D-44E7-9E67-A94FB4D847DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C593D44-C99D-44E7-9E67-A94FB4D847DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C593D44-C99D-44E7-9E67-A94FB4D847DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B75537F-79DB-413A-80B2-E75C45DD7A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B75537F-79DB-413A-80B2-E75C45DD7A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B75537F-79DB-413A-80B2-E75C45DD7A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B75537F-79DB-413A-80B2-E75C45DD7A91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
