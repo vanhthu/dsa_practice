@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CuaHangMayTinh
 {
-    // Class quản lý nhập xuất máy tính
+    // Class quản lý nhập xuất máy tính (DanhSachMayTinh)
     class QuanLyMayTinh
     {
         public static void Nhap(DanhSachMayTinh danhSach)
